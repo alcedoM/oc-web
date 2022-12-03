@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container pt-4 content">
+    {% if ProcessedSet|length > 0 %}
+    {% for OCset in ProcessedSet %}
+        <div class="row pb-4">
+            {% for oc in OCset %}
+            <div class="col-3">
+                <div class="card">
+                    {% if oc.index_photo %}
+                        <img src="{{ url_for('get_photo', filename = oc.index_photo) }}" class="card-img-top" alt="">
+                    {% else %}
+                        <img src="/static/pic/unknowoc.png" class="card-img-top" alt="">
+                    {% endif %}
+                    <div class="card-body">
+                    <h5 class="card-title">{{ oc.name }}</h5>
+                    <p class="card-text">{{ oc.short_intro }}</p>
+                    <a href="{{ url_for('ocindex', oc_id= oc.id) }}" class="btn btn-primary">更多</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+    {% else %}
+        <div class="text-center">
+            <div class="pt-4"></div>
+            <h2 class="">这里什么都没有哦</h2>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('createNewOC') }}" class="btn btn-primary">创建新OC</a>
+            {% else %}
+                <a href="mailto:none" class="btn btn-primary">联系作者</a>
+            {% endif %}
+
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}

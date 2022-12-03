@@ -11,6 +11,10 @@ name = "mirrorsaliyun"
 [packages]
 flask = {version = "*", index = "mirrorsaliyun"}
 python-dotenv = {version = "*", index = "mirrorsaliyun"}
+flask-sqlalchemy = "*"
+flask-ckeditor = "*"
+flask-wtf = "*"
+flask-login = "*"
 
 [dev-packages]
 watchdog = {version = "*", index = "mirrorsaliyun"}

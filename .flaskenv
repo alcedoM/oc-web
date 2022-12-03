@@ -1,1 +1,2 @@
-FLASK_ENV = development
+FLASK_APP = ocweb
+FLASK_DEBUG = 1
